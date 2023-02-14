@@ -6,17 +6,17 @@
 // Примеры:
 // ["hello", "2", "world", ":-)"] -> ["2", ":-)"]
 
-int numberElementsInArray = GetNumberFromUser();
-string[] array = FillArray(numberElementsInArray);
-string[] resultArray = SelectedArray(array);
-PrintArray(array);
+int numberElementsInArray = GetNumberFromUser();    //ввод кол-ва элементов будущего массива через функцию GetNumberFromUSer
+string[] array = FillArray(numberElementsInArray);  //создаем и сразу заполняем новый массив через функцию FillArray
+string[] resultArray = SelectedArray(array);        //получаем новый массив из строк, длина которых меньше или равна 3
+PrintArray(array);                                  //выводим начальный массив в консоль
 Console.Write(" -> ");
-PrintArray(resultArray);
+PrintArray(resultArray);                            //выводим полученный массив в консоль
 
 
 //Функции, используемые в массиве
 
-int GetNumberFromUser()
+int GetNumberFromUser()                             //функция, получающая от пользователя целое число больше нуля
 {
     while (true)
     {
@@ -28,7 +28,7 @@ int GetNumberFromUser()
     }
 }
 
-string[] FillArray(int num)
+string[] FillArray(int num)                         //функция заполнения массива строками
 {
     string[] arrayFill = new string[num];
     for (int i = 0; i < num; i++)
@@ -39,25 +39,25 @@ string[] FillArray(int num)
     return arrayFill;
 }
 
-string[] SelectedArray(string[] arr)
-{
+string[] SelectedArray(string[] arr)                //функция, создающая новый массив из тех строк изначального массива,
+{                                                   //длина которых меньше или равна 3
     int countNumberElements = 0;
-    for (int i = 0; i < arr.Length; i++)
-    {
+    for (int i = 0; i < arr.Length; i++)            //цикл, для определения количества элементов массива, длина строк
+    {                                               //которых меньше или равна 3
         if (arr[i].Length <= 3)
         {
             countNumberElements++;
         }
     }
-    if (countNumberElements > 0)
-    {
+    if (countNumberElements > 0)                    //условие, если в изначальном массиве есть хотя бы один элемент,
+    {                                               //длина строки которого меньше или равна 3
         string[] newArr = new string[countNumberElements];
         countNumberElements = 0;
         for (int i = 0; i < arr.Length; i++)
         {
-            if (arr[i].Length <= 3)
-            {
-                newArr[countNumberElements] = arr[i];
+            if (arr[i].Length <= 3)                             //условие, если длина строки элемента изначального массива
+            {                                                   //меньше или равна 3, то записываем этот элемент в новый
+                newArr[countNumberElements] = arr[i];           //массив
                 countNumberElements++;
             }
         }
@@ -65,12 +65,12 @@ string[] SelectedArray(string[] arr)
     }
     else
     {
-        string[] newArr = new string[countNumberElements];
-        return newArr;
-    }
+        string[] newArr = new string[countNumberElements];      //если в изначальном массиве нет ни одного элемента, длина
+        return newArr;                                          //строки которого меньше или равна 3, то возвращаем
+    }                                                           //пустой массив
 }
 
-void PrintArray(string[] arr)
+void PrintArray(string[] arr)                                   //функция для вывода элементов массива в консоль
 {
     Console.Write("[");
     try
